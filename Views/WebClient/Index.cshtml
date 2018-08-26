@@ -1,0 +1,39 @@
+@namespace MuseStar.Models
+@model List<Song>
+@{
+    Layout = null;
+}
+<!doctype html>
+<html>
+<head>
+    <title>Hello ASP.NET</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="~/Index.css" />
+</head>
+<body>
+<div class="player">
+    <div class="controls">
+        <button class="controls_play">Play</button>
+    </div>
+
+    <div class="progress">
+        <div class="progress_loaded"></div>
+        <div class="progress_current"></div>
+    </div>
+
+    <div class="volume">
+        <div class="volume_bar"></div>
+    </div>
+
+    <div class="overlay"></div>
+    <script src="https://music.yandex.ru/api/audio/dist/index.min.js"></script>
+    <script src="~/Index.js"></script>
+</div>
+<div class="playlist">
+    @foreach(Song song in @Model)
+    {
+        <p>@song.Name <span id=url hidden>@song.DownloadUrl</span></p>
+    }
+</div>
+</body>
+</html>
